@@ -2,6 +2,7 @@
 ## Data: 2024-09-09
 ## Autor: Beatriz Oliveira
 
+
 ## Resumo
 
 O TP1 consistiu na realização de dois exercícios:
