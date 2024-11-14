@@ -148,11 +148,11 @@ def Main():
 
         if opcao == "1":
             resultado = Calcula_Medias(tabMeteo)
-            print(f"Temperatura média de cada dia: {resultado}")
+            print(f"A temperatura média de cada dia é: {resultado}")
 
         elif opcao == "2":
             Guarda_TabMeteo(tabMeteo, fnome)
-            print(f"Tabela guardada com sucesso em: {fnome}")
+            print(f"A tabela foi guardada com sucesso em: {fnome}")
 
         elif opcao == "3":
             tabMeteo = Carrega_TabMeteo(fnome)
@@ -160,15 +160,15 @@ def Main():
 
         elif opcao == "4":
             resultado = Temp_minMin(tabMeteo)
-            print(f"Temperatura mínima mais baixa registada: {resultado}")
+            print(f"A temperatura mínima mais baixa registada foi: {resultado}")
 
         elif opcao == "5":
             resultado = Ampl_Term(tabMeteo)
-            print(f"Amplitude térmica de cada dia: {resultado}")
+            print(f"A amplitude térmica de cada dia foi: {resultado}")
 
         elif opcao == "6":
             resultado = Max_Chuva(tabMeteo)
-            print(f"Dia de precipitação máxima: {resultado}")
+            print(f"O dia de precipitação máxima foi: {resultado}")
         
         elif opcao == "7":
             p = float(input("Introduza um valor para o limite p:"))
@@ -184,7 +184,7 @@ def Main():
             if tabMeteo:
                 Graf_TabMeteo(tabMeteo)
             else:
-                print("Insira na tabela os dados necessários para a criação dos gráficos.")
+                print("Introduza na tabela os dados necessários para a criação dos gráficos.")
         
         elif opcao == "0":
             print("Até à próxima!")
