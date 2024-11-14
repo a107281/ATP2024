@@ -40,44 +40,42 @@ def Listar_Turma(turma):
 
 def Consultar_por_ID(turma):
     id_consultar = input("Digite o ID do aluno que deseja consultar: ")
-    aluno_encontrado = next((aluno for aluno in turma if aluno[1] == id_consultar), None)
-    if aluno_encontrado:
-        print(f"Aluno encontrado! \nNome: {aluno_encontrado[0]} \nNota do TPC: {aluno_encontrado[2][0]} \nNota do Projeto: {aluno_encontrado[2][1]} \nNota do Teste: {aluno_encontrado[2][2]}")
-    else:
-        print("Aluno não encontrado.")
+    aluno_encontrado = False
+    for aluno in turma:
+        if id_consultar == aluno[1]:
+            aluno_encontrado = True
+            print(f"Aluno encontrado! \nNome: {aluno[0]} \nNota do TPC: {aluno[2][0]} \nNota do Projeto: {aluno[2][1]} \nNota do Teste: {aluno[2][2]}")
+        if not aluno_encontrado:
+            print("Aluno não encontrado.")
 
 
 def Guardar_Turma_num_Ficheiro(turma):
-    nome_ficheiro = input("Nome do ficheiro para guardar (ex: turma.txt): ")
-    try:
-        with open(nome_ficheiro, 'w') as ficheiro:
-            for aluno in turma:
-                linha = f"{aluno[0]},{aluno[1]},{aluno[2][0]},{aluno[2][1]},{aluno[2][2]}\n"
-                ficheiro.write(linha)
-        print(f"Turma guardada com sucesso no ficheiro {nome_ficheiro}!")
-
-    except Exception as e:
-        print(f"Erro ao guardar a turma: {e}")
+    nome_ficheiro = input("Nome do ficheiro para guardar a turma (exemplo: turma.txt): ")
+    
+    file = open(nome_ficheiro, "w", encoding="utf-8")
+    for aluno in turma:
+        linha = f"{aluno[0]},{aluno[1]},{aluno[2][0]},{aluno[2][1]},{aluno[2][2]}\n"
+        file.write(f"{linha}")
+    file.close()
+    print(f"Turma guardada com sucesso no ficheiro {nome_ficheiro}!")
 
 
 def Carregar_Turma_de_Ficheiro():
     nome_ficheiro = input("Nome do ficheiro para carregar (ex: turma.txt): ")
-    try:
-        turma = []
-        with open(nome_ficheiro, 'r') as ficheiro:
-            for linha in ficheiro:
+    turma = []
+
+    file = open(nome_ficheiro, "r", encoding="utf-8")
+    for linha in file:
                 dados = linha.strip().split(",")
                 nome = dados[0]
                 id = dados[1]
                 notas = [float(dados[2]), float(dados[3]), float(dados[4])]
                 aluno = (nome, id, notas)
                 turma.append(aluno)
-        print(f"Turma carregada com sucesso do ficheiro {nome_ficheiro}!")
-        return turma
-    
-    except Exception as e:
-        print(f"Erro ao carregar a turma: {e}")
-        return []
+    file.close()
+    print(f"Turma carregada com sucesso do ficheiro {nome_ficheiro}!")
+    print(turma)
+    return turma
 
 
 def main():
@@ -111,5 +109,4 @@ def main():
             cond = False
             print("Até à próxima!")
 
-if __name__ == "__main__":
-    main()
+main()
