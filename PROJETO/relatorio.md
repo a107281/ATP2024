@@ -13,4 +13,5 @@ Palavra-chave mais frequente por ano:
 - 2015: Portugal (29 ocorrências)
 
 Gráfico de Palavra-Chave Mais Frequente por Ano
-![Gráfico de Palavra-Chave Mais Frequente por Ano](palavraMaisFrequentePorAno.png)
+![Uploading image.png…]()
+
